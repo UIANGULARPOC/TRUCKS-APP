@@ -25,7 +25,7 @@ angular.module('volvoTrucksApp')
       }
 
       app.deleteProduct = function(){
-          	  for(var i=1;i<data.length;i++){
+          	  for(var i=0;i<data.length;i++){
                 if(data[i].id == app.selectedItem.id){
                     data.splice(i,1);
                     break;

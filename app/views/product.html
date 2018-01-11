@@ -1,0 +1,89 @@
+<div class="container">
+	
+<h3>Edit Product Details</h3>
+<hr>
+<form name = "editForm" ng-submit="product.editProduct()" class = "form" novalidate>
+         <!--Product Name   -->
+        <div class="form-group" ng-class="{ 'has-error' : (editForm.uname.$invalid && !editForm.uname.$pristine) || (editForm.uname.$invalid && editForm.$submitted) ,'has-success' : (editForm.uname.$valid && !editForm.uname.$pristine)}">
+
+            <label>Name</label>
+
+            <input type="text" name="uname"  class="form-control" ng-model="product.selectedItem.Name"  required>
+
+            <p ng-show="editForm.uname.$error.required && !editForm.uname.$pristine" class="help-block">* Product name is required.</p>
+        </div>
+        <!-- Product Description  -->
+            <div class="form-group" ng-class="{ 'has-error' :(editForm.desc.$invalid && !editForm.desc.$pristine) || (editForm.desc.$invalid && editForm.$submitted) ,'has-success' : (editForm.desc.$valid && !editForm.desc.$pristine) }">
+
+            
+            <label>Description</label>
+            
+            <textarea name="desc" class="form-control" ng-model="product.selectedItem.Description" rows="5" cols="30" required>
+            </textarea>
+
+            <p ng-show="editForm.desc.$error.required && !editForm.desc.$pristine" class="help-block">* Product description is required.</p>
+        </div>
+            <div class="form-group" ng-class="{ 'has-error' : (editForm.price.$invalid && !editForm.price.$pristine)  ,'has-success' : (editForm.price.$valid && !editForm.price.$pristine) }" >
+            <!-- Product Price-->
+            <label>Price</label>
+            <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">&#x20B9</span>
+            <input type="text" name="price" class="form-control" ng-model="product.selectedItem.Price" ng-pattern="/^[0-9]*$/" required>
+        	</div>
+            <p ng-show="editForm.price.$error.required && !editForm.price.$pristine" class="help-block">* Product price is required.</p>
+            <p ng-if="editForm.price.$error.pattern" class="help-block">
+				Invalid price, use digits only.</p>
+        </div>
+        <!-- Country  -->
+            <div class="form-group" ng-class=" {'has-error' : (editForm.country.$invalid && !editForm.country.$pristine) ,'has-success' : (editForm.country.$valid && !editForm.country.$pristine) }">
+            	
+            <label>Country</label>
+            <!-- <select ng-options="country.code as country.name for country in countries"> <option value="" ng-if="isSelectionOptional"></option> </select> -->
+        	<select name="country" class="form-control" ng-model="product.selectedItem.country" required="">
+        		
+        		<option >India</option>
+        		<option >Sweden</option>
+        		<option >China</option> 
+        	</select>
+        	<p ng-if="editForm.country.$error.required && !editForm.country.$pristine" class="help-block">* Country name is required.</p>
+        </div>
+            <!-- <select class="form-control" name="country"  ng-model="product.selectedItem.country" selected="product.selectedItem.country" pvp-country-picker>
+
+            <p ng-if="editForm.country.$error.required && !editForm.country.$pristine" class="help-block">* Country name is required.</p>
+            </select>
+            
+        </div>
+		<!-- Email -->
+          <div class="form-group" ng-class=" {'has-error' : (editForm.email.$invalid && !editForm.email.$pristine) ,'has-success' : (editForm.email.$valid && !editForm.email.$pristine) }"">
+
+            <label>Email</label>
+
+            <input type="text" name="email" class="form-control" ng-model="product.selectedItem.email"   ng-pattern="/^[a-z-0-9_+.-]+\@([a-z0-9-]+\.)+[a-z0-9]{2,7}$/i" required >
+
+            <p ng-if="editForm.email.$error.required && !editForm.email.$pristine" class="help-block">* Contact email is required.</p>
+
+            <p ng-if="editForm.email.$error.pattern" class="help-block">
+					Invalid email ID! Please use "abc@xyz.com" format.</p>
+            
+        </div>
+
+
+        <div class="row show-hide-message col-md-6 col-xs-6 col-md-offset-2" ng-show="success_msg">
+       		<div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span>&nbsp;{{success_msg}}</div>
+      	</div>
+    	<div class="row show-hide-message col-md-6 col-xs-6 col-md-offset-2" ng-show="error_msg">
+        	<div class="alert alert-danger"> {{error_msg}}</div>
+      	</div>
+
+      	<button type="button"  class="btn btn-default pull-right gap"ng-click="product.cancel();">Cancel</button>
+         <button type="submit"  class="btn btn-warning pull-right" ng-disabled="editForm.$invalid && editForm.$dirty" >Update</button>
+        </form>
+
+
+
+        </div>
+        <br>
+
+       
+</div>
+</div>

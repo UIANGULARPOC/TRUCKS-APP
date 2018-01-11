@@ -1,0 +1,85 @@
+<div class="container">
+	
+<h3>Add New Product</h3>
+<hr>
+
+
+<form name = "addForm" ng-submit="addNew.addProduct()" class = "form" novalidate>
+         <!--addNew Name   -->
+        <div class="form-group" ng-class="{ 'has-error' : (addForm.uname.$invalid && !addForm.uname.$pristine) || (addForm.uname.$invalid && addForm.$submitted) ,'has-success' : (addForm.uname.$valid && !addForm.uname.$pristine)}">
+
+            <label>Name</label>
+
+            <input type="text" name="uname"  class="form-control" ng-model="addNew.selectedItem.Name"  required>
+
+            <p ng-show="addForm.uname.$error.required && !addForm.uname.$pristine" class="help-block">* Product name is required.</p>
+        </div>
+        <!-- addNew Description  -->
+            <div class="form-group" ng-class="{ 'has-error' :(addForm.desc.$invalid && !addForm.desc.$pristine) || (addForm.desc.$invalid && addForm.$submitted) ,'has-success' : (addForm.desc.$valid && !addForm.desc.$pristine) }">
+
+            
+            <label>Description</label>
+            
+            <textarea name="desc" class="form-control" ng-model="addNew.selectedItem.Description" rows="5" cols="30" required>
+            </textarea>
+
+            <p ng-show="addForm.desc.$error.required && !addForm.desc.$pristine" class="help-block">* Product description is required.</p>
+        </div>
+            <div class="form-group" ng-class="{ 'has-error' : (addForm.price.$invalid && !addForm.price.$pristine)  ,'has-success' : (addForm.price.$valid && !addForm.price.$pristine) }" >
+            <!-- addNew Price-->
+            <label>Price</label>
+            <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">&#x20B9</span>
+            <input type="text" name="price" class="form-control" ng-model="addNew.selectedItem.Price" ng-pattern="/^[0-9]*$/" required>
+             </div>
+            <p ng-show="addForm.price.$error.required && !addForm.price.$pristine" class="help-block">* Product price is required.</p>
+            <p ng-if="addForm.price.$error.pattern" class="help-block">
+				Invalid price, use digits only.</p>
+        </div>
+        <!-- Country  -->
+            <div class="form-group" ng-class=" {'has-error' : (addForm.country.$invalid && !addForm.country.$pristine),'has-success' : (addForm.country.$valid && !addForm.country.$pristine)  }">
+            	
+            <label>Country</label>
+           
+        	<select name="country" class="form-control" ng-model="addNew.selectedItem.country" required>
+        		<!-- <option value="">Select Country</option> -->
+        		<option value="India">India</option>
+        		<option value="Sweden">Sweden</option>
+        		<option value="China">China</option> 
+        	</select>
+        	<p ng-if="addForm.country.$error.required && !addForm.country.$pristine" class="help-block">* Product name is required.</p>
+        </div>
+     
+		<!-- Email -->
+          <div class="form-group" ng-class=" {'has-error' : (addForm.email.$invalid && !addForm.email.$pristine) ,'has-success' : (addForm.email.$valid && !addForm.email.$pristine) }"">
+
+            <label>Email</label>
+
+            <input type="text" name="email" class="form-control" ng-model="addNew.selectedItem.email"   ng-pattern="/^[a-z-0-9_+.-]+\@([a-z0-9-]+\.)+[a-z0-9]{2,7}$/i" required >
+
+            <p ng-if="addForm.email.$error.required && !addForm.email.$pristine" class="help-block">* Contact email is required.</p>
+
+            <p ng-if="addForm.email.$error.pattern" class="help-block">
+					Invalid email ID! Please use "abc@xyz.com" format.</p>
+            
+        </div>
+
+
+        <div class="row show-hide-message col-md-6 col-xs-6 col-md-offset-2" ng-show="addNew.success_msg">
+       		<div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span>&nbsp;{{addNew.success_msg}}</div>
+      	</div>
+    	<div class="row show-hide-message col-md-6 col-xs-6 col-md-offset-2" ng-show="addNew.error_msg">
+        	<div class="alert alert-danger"> {{addNew.error_msg}}</div>
+      	</div>
+        <button type="button" class="btn btn-default pull-right gap"  ng-click="addNew.cancel();">Cancel</button>
+         <button type="submit"  ng-disabled = "addForm.$invalid" class="btn btn-warning pull-right" > Add</button>
+        </form>
+
+
+
+        </div>
+        <br>
+
+       
+</div>
+</div>

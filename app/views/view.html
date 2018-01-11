@@ -1,0 +1,38 @@
+<div class="container">
+<div class="row">
+		<div class="col-md-6 ">
+			<p class="lead">Product List : <span class="badge">{{data.length}}</span></p>
+		</div>
+		<div class="col-md-6">
+			<a href="/addNew" class="btn btn-default btn-lg active  pull-right" role="button">Add New Product</a>
+		</div>
+</div>
+<hr>
+<div class="row">	
+<table class="table">
+	<thead>
+	<tr>
+		<th>Product</th>
+		<th>Name</th>
+		<th>Action</th>
+	</tr>
+
+	</thead>
+	<tbody>
+	<tr ng-repeat ="x in data">
+		<td><img src="{{x.image}}" width="100px;" height="100px;"></td>
+		<td>{{x.Name}}
+			<p>Price <span class="badge">&#x20B9 {{x.Price}}</span></p>
+		</td>
+		<td>
+			<span ng-click="view.editProduct(x.id);"><i title="Edit" class="glyphicon glyphicon-edit" style="color:#286090;"></i></span> | 
+			<span ng-click="view.deleteProduct(x.id);"><i title="Delete" class="glyphicon glyphicon-trash" style="color:orange;"></i></span>
+
+		</td>
+	</tr>
+</tbody>
+
+</table>
+</div>
+
+</div>

@@ -1,0 +1,44 @@
+<div class="container">
+<div class="row">
+		<div class="col-md-12">
+			<p class="alert alert-danger lead">Are you sure you want to delete <b>{{delete.selectedItem.Name}}</b> from the product list ? </p>
+		</div>
+		
+</div class="row">
+
+	<div class="well well-md">
+		
+		<table class="table">
+			<caption class="lead text-danger">Product Details:</caption>
+			<tr>
+				<td>Name</td>
+				<td>{{delete.selectedItem.Name}}</td>
+			</tr>
+			<tr>
+				<td>Description</td>
+				<td>{{delete.selectedItem.Description}}</td>
+			</tr>
+			<tr>
+				<td>Price</td>
+				<td>&#x20B9&nbsp;{{delete.selectedItem.Price}}</td>
+			</tr>
+			<tr>
+				<td>Country</td>
+				<td>{{delete.selectedItem.country}}</td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td>{{delete.selectedItem.email}}</td>
+			</tr>
+		
+
+		</table>
+
+		<button class="btn btn-default" ng-click="delete.Cancel()">Cancel</button>
+		<button class="btn btn-danger" ng-click="delete.deleteProduct()">Delete</button>
+
+
+	</div>
+
+
+</div>
